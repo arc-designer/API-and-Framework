@@ -4,34 +4,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="12dp">
+    android:padding="12dp"
+    android:background="@android:color/transparent">
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:text="Movie Title"
         android:textStyle="bold"
-        android:textColor="#000"
+        android:textSize="18sp"
+        android:textColor="#222"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvStudio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Studio Name"
+        android:textSize="15sp"
+        android:textColor="#444"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rating: 8.0"
+        android:textSize="14sp"
+        android:textColor="#222"
+        app:layout_constraintTop_toBottomOf="@id/tvStudio"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/tvYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textColor="#333"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <TextView
-        android:id="@+id/tvType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textColor="#333"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        android:text="Year: 2020"
+        android:textSize="14sp"
+        android:textColor="#222"
+        app:layout_constraintTop_toBottomOf="@id/tvStudio"
         app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,6 @@
 package com.example.movies_app.network
 
-import com.example.movies_app.model.MovieDetails
+import com.example.movies_app.model.Movie
 import com.example.movies_app.model.MovieSearchResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -17,6 +17,6 @@ interface OMDBApi {
     suspend fun getMovieDetails(
         @Query("apikey") apiKey: String,
         @Query("i") imdbID: String,
-        @Query("plot") plot: String = "full"
-    ): Response<MovieDetails>
+        @Query("plot") plot: String = "short"
+    ): Response<Movie>
 }

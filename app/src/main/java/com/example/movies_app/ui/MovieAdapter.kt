@@ -8,16 +8,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.movies_app.R
 import com.example.movies_app.model.Movie
 
-class MovieAdapter(private var movies: List<Movie>, val onItemClick: (Movie) -> Unit) :
-    RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(
+    private var movies: List<Movie>,
+    private val onItemClick: (Movie) -> Unit
+) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title: TextView = itemView.findViewById(R.id.tvTitle)
-        val year: TextView = itemView.findViewById(R.id.tvYear)
-        val type: TextView = itemView.findViewById(R.id.tvType)
+        val tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
+        val tvStudio: TextView = itemView.findViewById(R.id.tvStudio)
+        val tvRating: TextView = itemView.findViewById(R.id.tvRating)
+        val tvYear: TextView = itemView.findViewById(R.id.tvYear)
+
         init {
             itemView.setOnClickListener {
-                if (adapterPosition != RecyclerView.NO_POSITION) onItemClick(movies[adapterPosition])
+                if (adapterPosition != RecyclerView.NO_POSITION) {
+                    onItemClick(movies[adapterPosition])
+                }
             }
         }
     }
@@ -30,9 +36,10 @@ class MovieAdapter(private var movies: List<Movie>, val onItemClick: (Movie) -> 
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = movies[position]
-        holder.title.text = movie.Title
-        holder.year.text = movie.Year
-        holder.type.text = movie.Type
+        holder.tvTitle.text = movie.Title
+        holder.tvStudio.text = "Studio: ${movie.Production ?: "N/A"}"
+        holder.tvRating.text = "Rating: ${movie.imdbRating ?: "N/A"}"
+        holder.tvYear.text = "Year: ${movie.Year}"
     }
 
     override fun getItemCount() = movies.size

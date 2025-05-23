@@ -23,6 +23,10 @@ class MovieDetailsActivity : AppCompatActivity() {
         binding = ActivityMovieDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Enable back button in the action bar
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Movie Details"
+
         val imdbID = intent.getStringExtra("imdbID")
         if (imdbID.isNullOrEmpty()) {
             Toast.makeText(this, "No movie found", Toast.LENGTH_SHORT).show()
@@ -35,6 +39,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         viewModel.movieDetails.observe(this) { details ->
             if (details != null) {
                 binding.tvTitle.text = details.Title
+                binding.tvYear.text = "Year: ${details.Year}"
                 binding.tvRating.text = "IMDB Rating: ${details.imdbRating}"
                 binding.tvDescription.text = details.Plot
                 Glide.with(this)
@@ -45,5 +50,10 @@ class MovieDetailsActivity : AppCompatActivity() {
                 finish()
             }
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }
